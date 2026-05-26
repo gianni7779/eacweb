@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EAC Technology</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+.background{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top right, rgba(0,200,255,0.14), transparent 30%),
+radial-gradient(circle at bottom left, rgba(0,255,170,0.10), transparent 30%),
+#050505;
+z-index:-2;
+}
+
+.grid{
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+background-size:50px 50px;
+z-index:-1;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+backdrop-filter:blur(14px);
+background:rgba(0,0,0,0.45);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+nav{
+max-width:1450px;
+margin:auto;
+padding:22px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo img{
+height:75px;
+object-fit:contain;
+}
+
+.links{
+display:flex;
+gap:35px;
+}
+
+.links a{
+text-decoration:none;
+color:white;
+opacity:0.75;
+transition:0.3s;
+font-size:15px;
+}
+
+.links a:hover{
+opacity:1;
+color:#00c8ff;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:150px 40px 80px;
+}
+
+.hero-container{
+max-width:1450px;
+margin:auto;
+width:100%;
+display:grid;
+grid-template-columns:1.1fr 0.9fr;
+gap:70px;
+align-items:center;
+}
+
+.hero-text img{
+width:120px;
+margin-bottom:30px;
+filter:drop-shadow(0 0 25px rgba(0,200,255,0.5));
+}
+
+.hero-text h1{
+font-size:90px;
+line-height:0.95;
+margin-bottom:30px;
+font-weight:900;
+}
+
+.hero-text h1 span{
+color:#00c8ff;
+}
+
+.hero-text p{
+font-size:19px;
+line-height:1.9;
+color:#d6d6d6;
+margin-bottom:45px;
+max-width:750px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:18px 34px;
+border-radius:18px;
+text-decoration:none;
+transition:0.35s;
+font-weight:700;
+}
+
+.primary{
+background:#00c8ff;
+color:black;
+box-shadow:0 0 35px rgba(0,200,255,0.35);
+}
+
+.primary:hover{
+transform:translateY(-5px);
+}
+
+.secondary{
+border:1px solid rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.03);
+color:white;
+}
+
+.secondary:hover{
+transform:translateY(-5px);
+border-color:#00c8ff;
+}
+
+.panel{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:35px;
+padding:35px;
+backdrop-filter:blur(20px);
+box-shadow:0 0 50px rgba(0,200,255,0.08);
+}
+
+.panel-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.online{
+color:#00ff9d;
+font-weight:700;
+}
+
+.hero-box{
+background:rgba(255,255,255,0.04);
+padding:24px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.hero-box h2{
+font-size:40px;
+color:#00c8ff;
+margin-bottom:10px;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:18px;
+}
+
+.mini{
+background:rgba(255,255,255,0.04);
+padding:22px;
+border-radius:20px;
+}
+
+.mini h3{
+color:#00c8ff;
+font-size:28px;
+margin-bottom:8px;
+}
+
+.big-box{
+margin-top:20px;
+background:linear-gradient(135deg, rgba(0,200,255,0.12), rgba(255,255,255,0.03));
+padding:28px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.big-box h3{
+margin-bottom:12px;
+font-size:26px;
+}
+
+.big-box p{
+color:#d5d5d5;
+line-height:1.8;
+}
+
+section{
+padding:120px 40px;
+}
+
+.container{
+max-width:1450px;
+margin:auto;
+}
+
+.title{
+text-align:center;
+margin-bottom:80px;
+}
+
+.title h2{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.title p{
+color:#d0d0d0;
+line-height:1.8;
+max-width:780px;
+margin:auto;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.05);
+border-radius:32px;
+padding:35px;
+transition:0.4s;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-12px);
+border-color:#00c8ff;
+box-shadow:0 0 40px rgba(0,200,255,0.1);
+}
+
+.icon{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:16px;
+}
+
+.card p{
+color:#d8d8d8;
+line-height:1.8;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:35px;
+}
+
+.product{
+background:
+linear-gradient(180deg, rgba(0,200,255,0.10), rgba(255,255,255,0.03));
+border:1px solid rgba(255,255,255,0.08);
+border-radius:35px;
+padding:40px;
+position:relative;
+}
+
+.tag{
+position:absolute;
+top:25px;
+right:25px;
+background:#00c8ff;
+color:black;
+padding:10px 16px;
+border-radius:14px;
+font-size:12px;
+font-weight:800;
+}
+
+.product h3{
+font-size:34px;
+}
+
+.price{
+font-size:60px;
+font-weight:900;
+color:#00c8ff;
+margin:28px 0;
+}
+
+.product ul{
+list-style:none;
+}
+
+.product ul li{
+margin-bottom:16px;
+color:#d8d8d8;
+}
+
+.collabs{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.collab{
+background:rgba(255,255,255,0.03);
+border-radius:28px;
+padding:35px;
+border:1px solid rgba(255,255,255,0.05);
+text-align:center;
+transition:0.3s;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:180px;
+}
+
+.collab:hover{
+transform:translateY(-8px);
+border-color:#00c8ff;
+}
+
+.collab img{
+max-width:180px;
+object-fit:contain;
+}
+
+.contact{
+text-align:center;
+background:
+linear-gradient(135deg, rgba(0,200,255,0.14), rgba(255,255,255,0.03));
+border-radius:40px;
+padding:90px 40px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact h2{
+font-size:62px;
+margin-bottom:20px;
+}
+
+.contact p{
+max-width:760px;
+margin:auto;
+line-height:1.9;
+color:#d5d5d5;
+margin-bottom:40px;
+}
+
+.contact-boxes{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+margin-bottom:40px;
+}
+
+.contact-box{
+background:rgba(255,255,255,0.04);
+padding:25px 35px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,0.06);
+min-width:320px;
+}
+
+.contact-box h3{
+color:#00c8ff;
+margin-bottom:10px;
+}
+
+form{
+max-width:900px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:22px;
+margin-top:50px;
+}
+
+.input-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+input,
+textarea{
+padding:20px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.04);
+color:white;
+font-size:16px;
+outline:none;
+}
+
+textarea{
+min-height:220px;
+resize:none;
+padding:25px;
+border-radius:24px;
+}
+
+footer{
+padding:45px;
+text-align:center;
+color:#888;
+border-top:1px solid rgba(255,255,255,0.05);
+}
+
+@media(max-width:1000px){
+
+.hero-container{
+grid-template-columns:1fr;
+}
+
+.hero-text h1{
+font-size:62px;
+}
+
+.links{
+display:none;
+}
+
+.title h2{
+font-size:42px;
+}
+
+.contact h2{
+font-size:44px;
+}
+
+.input-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="grid"></div>
+
+<header>
+
+<nav>
+
+<div class="logo">
+
+<img src="logo_azienzda-removebg-preview (2) (1).png">
+
+</div>
+
+<div class="links">
+<a href="#services">Servizi</a>
+<a href="#products">Prodotti</a>
+<a href="#solutions">Soluzioni</a>
+<a href="#partners">Partners</a>
+<a href="#project">Progetto</a>
+<a href="#contact">Contatti</a>
+</div>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-container">
+
+<div class="hero-text">
+
+<img src="logo-removebg-preview (1).png">
+
+<h1>
+THE FUTURE<br>
+IS <span>EAC</span>
+</h1>
+
+<p>
+EAC Technology realizza ecosistemi smart professionali:
+domotica avanzata, videosorveglianza AI, Home Assistant,
+reti professionali, sviluppo siti web, branding digitale
+e automazioni intelligenti.
+<br><br>
+Dal design del sito web fino al controllo completo
+della smart home, EAC sviluppa tecnologie moderne,
+eleganti e totalmente personalizzate.
+</p>
+
+<div class="buttons">
+
+<a href="#products" class="btn primary">
+Scopri EAC
+</a>
+
+<a href="#contact" class="btn secondary">
+Contattaci
+</a>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-top">
+
+<h3>EAC Technology</h3>
+
+<div class="online">
+● SYSTEM ACTIVE
+</div>
+
+</div>
+
+<div class="hero-box">
+
+<h2>AI</h2>
+
+<p style="color:#d8d8d8;">
+Smart Automation System
+</p>
+
+</div>
+
+<div class="hero-grid">
+
+<div class="mini">
+<h3>24/7</h3>
+<p>Monitoring</p>
+</div>
+
+<div class="mini">
+<h3>WEB</h3>
+<p>Development</p>
+</div>
+
+</div>
+
+<div class="big-box">
+
+<h3>Next Generation Technology</h3>
+
+<p>
+Domotica, networking professionale,
+videosorveglianza AI e sviluppo web
+in un unico ecosistema smart.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="services">
+
+<div class="container">
+
+<div class="title">
+
+<h2>Servizi Premium</h2>
+
+<p>
+Tecnologia, design e automazione
+in un unico ecosistema professionale.
+</p>
+
+</div>
+
+<div class="services">
+
+<div class="card">
+<div class="icon">🏠</div>
+<h3>Smart Home</h3>
+<p>Automazioni complete per luci, tapparelle, clima, cancelli e sensori intelligenti.</p>
+</div>
+
+<div class="card">
+<div class="icon">📹</div>
+<h3>Videosorveglianza AI</h3>
+<p>Sistemi NVR avanzati con Frigate AI, notifiche smart e monitoraggio professionale.</p>
+</div>
+
+<div class="card">
+<div class="icon">🌐</div>
+<h3>Siti Web Moderni</h3>
+<p>Sviluppo siti web futuristici, dashboard smart e piattaforme business.</p>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Server EAC</h3>
+<p>Mini server professionali per Home Assistant, storage e controllo remoto.</p>
+</div>
+
+<div class="card">
+<div class="icon">📡</div>
+<h3>Ponti Radio</h3>
+<p>Collegamenti wireless professionali ad alta velocità e lunga distanza.</p>
+</div>
+
+<div class="card">
+<div class="icon">🎨</div>
+<h3>Brand Identity</h3>
+<p>Branding digitale, loghi professionali e contenuti social avanzati.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="partners">
+
+<div class="container">
+
+<div class="title">
+
+<h2>Partners & Technologies</h2>
+
+<p>
+EAC utilizza tecnologie e dispositivi dei migliori brand del settore.
+</p>
+
+</div>
+
+<div class="collabs">
+
+<div class="collab">
+<img src="dd12e4af-6f11-47a2-bf22-dd4ea3e489da(1).png">
+</div>
+
+<div class="collab">
+<img src="43839691-5db6-4194-8c63-da8a980d6c43(1).png">
+</div>
+
+<div class="collab">
+<img src="8df69ee8-f0c7-4097-8f31-6d8948a066e6(1).png">
+</div>
+
+<div class="collab">
+<img src="fe21e3b9-c76b-4434-a386-f8b607bb28d8(1).png">
+</div>
+
+<div class="collab">
+<img src="7e5d6c4a-4ac4-4f59-939d-70eb8dd62718(1).png">
+</div>
+
+<div class="collab">
+<img src="73186eaa-cd6f-4a88-83f1-a30b8ab84ecf(1).png">
+</div>
+
+<div class="collab">
+<img src="3c5a17d4-036c-4388-a2ed-6da4a823cc4a(1).png">
+</div>
+
+<div class="collab">
+<img src="bbb26fbe-f871-4381-bb6e-a51f3f92625c(1).png">
+</div>
+
+<div class="collab">
+<img src="a59ece55-590e-4839-a701-edc331b1dfaf(1).png">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="project">
+
+<div class="container">
+
+<div class="contact">
+
+<h2>Parlaci Del Tuo Progetto</h2>
+
+<p>
+Compila il modulo qui sotto e il team EAC
+ti contatterà per sviluppare il tuo progetto personalizzato.
+</p>
+
+<form action="https://formsubmit.co/infoelectronicascione@gmail.com" method="POST">
+
+<div class="input-grid">
+
+<input type="text" placeholder="Nome" required>
+<input type="text" placeholder="Cognome" required>
+
+</div>
+
+<div class="input-grid">
+
+<input type="tel" placeholder="Numero di telefono" required>
+<input type="email" placeholder="Email" required>
+
+</div>
+
+<textarea placeholder="Descrivi il tuo progetto..." required></textarea>
+
+<button type="submit" class="btn primary" style="border:none;cursor:pointer;width:100%;">
+Invia Richiesta
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container">
+
+<div class="contact">
+
+<h2>Contattaci</h2>
+
+<p>
+Contatta EAC Technology per iniziare il tuo progetto.
+</p>
+
+<div class="contact-boxes">
+
+<div class="contact-box">
+
+<h3>📧 Email</h3>
+
+<p>
+infoelectronicascione@gmail.com
+</p>
+
+</div>
+
+<div class="contact-box">
+
+<h3>📱 Business</h3>
+
+<p>
++39 3391749658
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 EAC Technology — Smart Systems • AI • Web • Innovation
+
+</footer>
+
+</body>
+
+</html>
