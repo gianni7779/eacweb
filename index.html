@@ -95,6 +95,8 @@
     .hero-notes { margin: 24px 0 0; display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; list-style: none; color: var(--muted); font-size: .86rem; }
     .hero-notes li { display: inline-flex; align-items: center; gap: 8px; }
     .hero-notes li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .hero-visual { display: flex; flex-direction: column; justify-content: center; align-self: stretch; }
+    .hero-signature { display: block; width: min(58%, 300px); height: auto; margin: 0 auto 14px; filter: drop-shadow(0 0 24px rgba(45,212,255,.12)); }
 
     .system-card {
       position: relative;
@@ -314,6 +316,7 @@
       .hero { padding-top: 56px; }
       .hero-grid, .section-head, .method-grid, .contact-wrap, .focus-grid, .identity-card { grid-template-columns: 1fr; }
       .focus-grid.reverse .focus-copy, .focus-grid.reverse .focus-visual { order: initial; }
+      .hero-signature { width: min(66%, 280px); margin-top: 8px; }
       .system-card { min-height: 470px; }
       .strip-grid { grid-template-columns: repeat(2, 1fr); }
       .strip-title { grid-column: 1 / -1; text-align: center; }
@@ -413,15 +416,18 @@
           </ul>
         </div>
 
-        <div class="system-card" role="img" aria-label="Schema EAC che collega domotica, rete, sicurezza e dati">
-          <div class="card-top"><i></i><i></i><i></i><span>SISTEMA ATTIVO</span></div>
-          <div class="diagram">
-            <span class="signal s1"></span><span class="signal s2"></span><span class="signal s3"></span><span class="signal s4"></span>
-            <div class="core"><img src="assets/eac-mark.png" alt=""></div>
-            <div class="node n1"><b>Smart spaces</b><small>Controllo e scenari</small></div>
-            <div class="node n2"><b>Networking</b><small>Wi-Fi · LAN · VPN</small></div>
-            <div class="node n3"><b>Sicurezza</b><small>Video · Accessi</small></div>
-            <div class="node n4"><b>Dati & server</b><small>Backup · NAS</small></div>
+        <div class="hero-visual">
+          <img class="hero-signature" src="assets/eac-hero-logo.png" alt="EAC Electronic Ascione Company">
+          <div class="system-card" role="img" aria-label="Schema EAC che collega domotica, rete, sicurezza e dati">
+            <div class="card-top"><i></i><i></i><i></i><span>SISTEMA ATTIVO</span></div>
+            <div class="diagram">
+              <span class="signal s1"></span><span class="signal s2"></span><span class="signal s3"></span><span class="signal s4"></span>
+              <div class="core"><img src="assets/eac-mark.png" alt=""></div>
+              <div class="node n1"><b>Smart spaces</b><small>Controllo e scenari</small></div>
+              <div class="node n2"><b>Networking</b><small>Wi-Fi · LAN · VPN</small></div>
+              <div class="node n3"><b>Sicurezza</b><small>Video · Accessi</small></div>
+              <div class="node n4"><b>Dati & server</b><small>Backup · NAS</small></div>
+            </div>
           </div>
         </div>
       </div>
