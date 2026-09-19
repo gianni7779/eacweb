@@ -1,825 +1,662 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>EAC Technology</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:#050505;
-color:white;
-overflow-x:hidden;
-}
-
-.background{
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at top right, rgba(0,200,255,0.14), transparent 30%),
-radial-gradient(circle at bottom left, rgba(0,255,170,0.10), transparent 30%),
-#050505;
-z-index:-2;
-}
-
-.grid{
-position:fixed;
-inset:0;
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-background-size:50px 50px;
-z-index:-1;
-}
-
-header{
-position:fixed;
-top:0;
-width:100%;
-z-index:1000;
-backdrop-filter:blur(14px);
-background:rgba(0,0,0,0.45);
-border-bottom:1px solid rgba(255,255,255,0.05);
-}
-
-nav{
-max-width:1450px;
-margin:auto;
-padding:22px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo img{
-height:75px;
-object-fit:contain;
-}
-
-.links{
-display:flex;
-gap:35px;
-}
-
-.links a{
-text-decoration:none;
-color:white;
-opacity:0.75;
-transition:0.3s;
-font-size:15px;
-}
-
-.links a:hover{
-opacity:1;
-color:#00c8ff;
-}
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding:150px 40px 80px;
-}
-
-.hero-container{
-max-width:1450px;
-margin:auto;
-width:100%;
-display:grid;
-grid-template-columns:1.1fr 0.9fr;
-gap:70px;
-align-items:center;
-}
-
-.hero-text img{
-width:120px;
-margin-bottom:30px;
-filter:drop-shadow(0 0 25px rgba(0,200,255,0.5));
-}
-
-.hero-text h1{
-font-size:90px;
-line-height:0.95;
-margin-bottom:30px;
-font-weight:900;
-}
-
-.hero-text h1 span{
-color:#00c8ff;
-}
-
-.hero-text p{
-font-size:19px;
-line-height:1.9;
-color:#d6d6d6;
-margin-bottom:45px;
-max-width:750px;
-}
-
-.buttons{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:18px 34px;
-border-radius:18px;
-text-decoration:none;
-transition:0.35s;
-font-weight:700;
-}
-
-.primary{
-background:#00c8ff;
-color:black;
-box-shadow:0 0 35px rgba(0,200,255,0.35);
-}
-
-.primary:hover{
-transform:translateY(-5px);
-}
-
-.secondary{
-border:1px solid rgba(255,255,255,0.1);
-background:rgba(255,255,255,0.03);
-color:white;
-}
-
-.secondary:hover{
-transform:translateY(-5px);
-border-color:#00c8ff;
-}
-
-.panel{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:35px;
-padding:35px;
-backdrop-filter:blur(20px);
-box-shadow:0 0 50px rgba(0,200,255,0.08);
-}
-
-.panel-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:30px;
-}
-
-.online{
-color:#00ff9d;
-font-weight:700;
-}
-
-.hero-box{
-background:rgba(255,255,255,0.04);
-padding:24px;
-border-radius:24px;
-border:1px solid rgba(255,255,255,0.05);
-}
-
-.hero-box h2{
-font-size:40px;
-color:#00c8ff;
-margin-bottom:10px;
-}
-
-.hero-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-top:18px;
-}
-
-.mini{
-background:rgba(255,255,255,0.04);
-padding:22px;
-border-radius:20px;
-}
-
-.mini h3{
-color:#00c8ff;
-font-size:28px;
-margin-bottom:8px;
-}
-
-.big-box{
-margin-top:20px;
-background:linear-gradient(135deg, rgba(0,200,255,0.12), rgba(255,255,255,0.03));
-padding:28px;
-border-radius:28px;
-border:1px solid rgba(255,255,255,0.05);
-}
-
-.big-box h3{
-margin-bottom:12px;
-font-size:26px;
-}
-
-.big-box p{
-color:#d5d5d5;
-line-height:1.8;
-}
-
-section{
-padding:120px 40px;
-}
-
-.container{
-max-width:1450px;
-margin:auto;
-}
-
-.title{
-text-align:center;
-margin-bottom:80px;
-}
-
-.title h2{
-font-size:60px;
-margin-bottom:20px;
-}
-
-.title p{
-color:#d0d0d0;
-line-height:1.8;
-max-width:780px;
-margin:auto;
-}
-
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
-}
-
-.card{
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.05);
-border-radius:32px;
-padding:35px;
-transition:0.4s;
-overflow:hidden;
-}
-
-.card:hover{
-transform:translateY(-12px);
-border-color:#00c8ff;
-box-shadow:0 0 40px rgba(0,200,255,0.1);
-}
-
-.icon{
-font-size:48px;
-margin-bottom:20px;
-}
-
-.card h3{
-font-size:28px;
-margin-bottom:16px;
-}
-
-.card p{
-color:#d8d8d8;
-line-height:1.8;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-gap:35px;
-}
-
-.product{
-background:
-linear-gradient(180deg, rgba(0,200,255,0.10), rgba(255,255,255,0.03));
-border:1px solid rgba(255,255,255,0.08);
-border-radius:35px;
-padding:40px;
-position:relative;
-}
-
-.tag{
-position:absolute;
-top:25px;
-right:25px;
-background:#00c8ff;
-color:black;
-padding:10px 16px;
-border-radius:14px;
-font-size:12px;
-font-weight:800;
-}
-
-.product h3{
-font-size:34px;
-}
-
-.price{
-font-size:60px;
-font-weight:900;
-color:#00c8ff;
-margin:28px 0;
-}
-
-.product ul{
-list-style:none;
-}
-
-.product ul li{
-margin-bottom:16px;
-color:#d8d8d8;
-}
-
-.collabs{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.collab{
-background:rgba(255,255,255,0.03);
-border-radius:28px;
-padding:35px;
-border:1px solid rgba(255,255,255,0.05);
-text-align:center;
-transition:0.3s;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:180px;
-}
-
-.collab:hover{
-transform:translateY(-8px);
-border-color:#00c8ff;
-}
-
-.collab img{
-max-width:180px;
-object-fit:contain;
-}
-
-.contact{
-text-align:center;
-background:
-linear-gradient(135deg, rgba(0,200,255,0.14), rgba(255,255,255,0.03));
-border-radius:40px;
-padding:90px 40px;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.contact h2{
-font-size:62px;
-margin-bottom:20px;
-}
-
-.contact p{
-max-width:760px;
-margin:auto;
-line-height:1.9;
-color:#d5d5d5;
-margin-bottom:40px;
-}
-
-.contact-boxes{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:25px;
-margin-bottom:40px;
-}
-
-.contact-box{
-background:rgba(255,255,255,0.04);
-padding:25px 35px;
-border-radius:24px;
-border:1px solid rgba(255,255,255,0.06);
-min-width:320px;
-}
-
-.contact-box h3{
-color:#00c8ff;
-margin-bottom:10px;
-}
-
-form{
-max-width:900px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:22px;
-margin-top:50px;
-}
-
-.input-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-input,
-textarea{
-padding:20px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,0.08);
-background:rgba(255,255,255,0.04);
-color:white;
-font-size:16px;
-outline:none;
-}
-
-textarea{
-min-height:220px;
-resize:none;
-padding:25px;
-border-radius:24px;
-}
-
-footer{
-padding:45px;
-text-align:center;
-color:#888;
-border-top:1px solid rgba(255,255,255,0.05);
-}
-
-@media(max-width:1000px){
-
-.hero-container{
-grid-template-columns:1fr;
-}
-
-.hero-text h1{
-font-size:62px;
-}
-
-.links{
-display:none;
-}
-
-.title h2{
-font-size:42px;
-}
-
-.contact h2{
-font-size:44px;
-}
-
-.input-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050b14">
+  <meta name="description" content="EAC Technologies progetta e integra domotica, videosorveglianza, reti professionali, server e automazioni per case e aziende.">
+  <title>EAC Technologies | Sistemi integrati per case e aziende</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050b14'/%3E%3Cpath d='M36 5 16 35h14l-3 24 21-33H34z' fill='%232dd4ff'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #050b14;
+      --ink-2: #091322;
+      --panel: #0d1c30;
+      --panel-2: #102942;
+      --line: #203953;
+      --line-bright: rgba(45, 212, 255, .46);
+      --cyan: #2dd4ff;
+      --cyan-soft: #8ee9ff;
+      --blue: #248bff;
+      --green: #49e6a1;
+      --white: #f7fbff;
+      --muted: #93abc3;
+      --max: 1180px;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 88% 7%, rgba(36, 139, 255, .12), transparent 27rem),
+        radial-gradient(circle at 12% 42%, rgba(45, 212, 255, .07), transparent 24rem),
+        var(--ink);
+      color: var(--white);
+      font: 400 1rem/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+
+    .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(147, 171, 195, .14);
+      background: rgba(5, 11, 20, .82);
+      backdrop-filter: blur(18px);
+    }
+    .nav { min-height: 78px; display: flex; align-items: center; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+    .brand img { width: 42px; height: 42px; object-fit: contain; }
+    .brand-copy { display: grid; line-height: 1.05; }
+    .brand-copy strong { font-size: 1.05rem; letter-spacing: .06em; }
+    .brand-copy span { color: var(--muted); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; margin-top: 5px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: #bed0e1; text-decoration: none; font-size: .91rem; font-weight: 650; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), #1aa6d7);
+      color: #021019;
+      text-decoration: none;
+      font-weight: 850;
+      box-shadow: 0 12px 35px rgba(45, 212, 255, .14);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .button:hover, .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 42px rgba(45, 212, 255, .22); }
+    .button.secondary { background: rgba(16, 41, 66, .62); border-color: var(--line); color: var(--white); box-shadow: none; }
+    .button.secondary:hover { border-color: var(--line-bright); }
+    .menu-button { display: none; border: 0; background: transparent; color: white; padding: 8px; }
+
+    .hero { padding: 78px 0 54px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: clamp(42px, 7vw, 92px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--cyan); font-size: .78rem; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--cyan); box-shadow: 0 0 13px var(--cyan); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin: 24px 0 24px; max-width: 760px; font-size: clamp(3rem, 6.5vw, 6.2rem); line-height: .96; letter-spacing: -.055em; }
+    h1 span { color: var(--cyan); text-shadow: 0 0 30px rgba(45, 212, 255, .18); }
+    .hero-copy > p { max-width: 630px; color: #abc0d4; font-size: clamp(1.06rem, 1.5vw, 1.2rem); }
+    .hero-actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-notes { margin: 24px 0 0; display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; list-style: none; color: var(--muted); font-size: .86rem; }
+    .hero-notes li { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-notes li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+
+    .system-card {
+      position: relative;
+      min-height: 510px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(45, 212, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45, 212, 255, .035) 1px, transparent 1px),
+        linear-gradient(145deg, rgba(16, 41, 66, .94), rgba(7, 17, 30, .98));
+      background-size: 32px 32px, 32px 32px, auto;
+      box-shadow: 0 30px 80px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    .card-top { position: absolute; inset: 0 0 auto; height: 50px; display: flex; align-items: center; gap: 7px; padding: 0 20px; border-bottom: 1px solid rgba(147,171,195,.12); background: rgba(5,11,20,.46); }
+    .card-top i { width: 7px; height: 7px; border-radius: 50%; background: #35526d; }
+    .card-top i:first-child { background: var(--cyan); box-shadow: 0 0 11px rgba(45,212,255,.8); }
+    .card-top span { margin-left: auto; color: var(--green); font-size: .7rem; font-style: normal; font-weight: 800; letter-spacing: .1em; }
+    .diagram { position: absolute; inset: 50px 0 0; }
+    .diagram::before, .diagram::after { content: ""; position: absolute; inset: 50%; border: 1px solid rgba(45,212,255,.16); border-radius: 50%; transform: translate(-50%,-50%); }
+    .diagram::before { width: 300px; height: 300px; }
+    .diagram::after { width: 410px; height: 410px; border-style: dashed; animation: spin 35s linear infinite; }
+    .core {
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 148px; height: 148px;
+      display: grid; place-items: center;
+      border: 1px solid var(--line-bright);
+      border-radius: 34px;
+      transform: translate(-50%,-50%) rotate(45deg);
+      background: linear-gradient(145deg, #123454, #081523);
+      box-shadow: 0 0 0 13px rgba(45,212,255,.035), 0 0 55px rgba(45,212,255,.13);
+    }
+    .core img { width: 82px; transform: rotate(-45deg); filter: drop-shadow(0 0 15px rgba(45,212,255,.2)); }
+    .node { position: absolute; min-width: 132px; padding: 13px 15px; border: 1px solid #274560; border-radius: 14px; background: rgba(9, 25, 42, .92); box-shadow: 0 12px 28px rgba(0,0,0,.28); }
+    .node b { display: block; font-size: .84rem; letter-spacing: .02em; }
+    .node small { color: var(--muted); font-size: .68rem; }
+    .node::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 2px; background: var(--cyan); box-shadow: 0 0 10px rgba(45,212,255,.55); }
+    .n1 { left: 6%; top: 15%; }
+    .n2 { right: 5%; top: 17%; }
+    .n3 { left: 5%; bottom: 15%; }
+    .n4 { right: 6%; bottom: 12%; }
+    .signal { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: .45; transform-origin: left center; }
+    .s1 { width: 130px; left: 27%; top: 34%; transform: rotate(26deg); }
+    .s2 { width: 130px; left: 51%; top: 45%; transform: rotate(-26deg); }
+    .s3 { width: 140px; left: 27%; top: 65%; transform: rotate(-27deg); }
+    .s4 { width: 140px; left: 52%; top: 56%; transform: rotate(28deg); }
+    @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    .strip { padding: 22px 0; border-block: 1px solid rgba(147,171,195,.12); background: rgba(8,20,34,.62); }
+    .strip-grid { display: grid; grid-template-columns: 1.3fr repeat(5, 1fr); gap: 18px; align-items: center; }
+    .strip-title { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .14em; }
+    .strip-item { color: #c9d9e7; font-size: .84rem; font-weight: 730; text-align: center; }
+
+    section { padding: 100px 0; }
+    section[id] { scroll-margin-top: 92px; }
+    .section-head { display: grid; grid-template-columns: .82fr 1.18fr; gap: 64px; align-items: end; margin-bottom: 44px; }
+    .section-head h2 { margin: 12px 0 0; font-size: clamp(2.3rem, 4vw, 4rem); line-height: 1.02; letter-spacing: -.045em; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 1.05rem; max-width: 620px; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .service-card { position: relative; min-height: 290px; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(15,36,59,.92), rgba(8,18,31,.96)); overflow: hidden; transition: transform .22s ease, border-color .22s ease; }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(45,212,255,.45); }
+    .service-card::after { content: attr(data-code); position: absolute; right: 24px; top: 21px; color: rgba(142,233,255,.45); font: 700 .7rem/1 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .12em; }
+    .service-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line-bright); border-radius: 13px; color: var(--cyan); background: rgba(45,212,255,.06); font-size: 1.25rem; font-weight: 900; }
+    .service-card h3 { margin: 46px 0 12px; font-size: 1.46rem; }
+    .service-card p { color: var(--muted); margin-bottom: 0; max-width: 520px; }
+    .service-card ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 22px 0 0; }
+    .service-card li { padding: 7px 10px; border: 1px solid rgba(147,171,195,.16); border-radius: 999px; color: #abc3d8; font-size: .74rem; }
+
+    .focus-section { padding: 112px 0; }
+    .focus-section.alt { background: linear-gradient(180deg, rgba(7,17,29,.2), rgba(12,31,50,.7)); border-block: 1px solid rgba(147,171,195,.1); }
+    .focus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(44px, 7vw, 90px); align-items: center; }
+    .focus-grid.reverse .focus-copy { order: 2; }
+    .focus-grid.reverse .focus-visual { order: 1; }
+    .focus-copy h2 { margin: 18px 0 22px; font-size: clamp(2.55rem, 4.6vw, 4.8rem); line-height: .98; letter-spacing: -.05em; }
+    .focus-copy > p { color: #a9bfd3; font-size: 1.06rem; }
+    .focus-list { display: grid; gap: 14px; margin-top: 32px; }
+    .focus-item { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; }
+    .focus-item > span { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line-bright); border-radius: 9px; color: var(--cyan); font: 800 .74rem/1 ui-monospace, SFMono-Regular, Consolas, monospace; background: rgba(45,212,255,.05); }
+    .focus-item h3 { margin: 1px 0 4px; font-size: 1rem; }
+    .focus-item p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .focus-visual { position: relative; min-height: 510px; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; background: linear-gradient(145deg, #0f2942, #07131f); box-shadow: 0 28px 70px rgba(0,0,0,.32); }
+    .panel-bar { height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: 1px solid rgba(147,171,195,.14); background: rgba(4,13,23,.45); }
+    .panel-bar b { font: 800 .73rem/1 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .12em; color: var(--cyan); }
+    .panel-state { display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-size: .71rem; font-weight: 800; }
+    .panel-state::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
+    .workflow { padding: 28px; }
+    .workflow-step { position: relative; display: grid; grid-template-columns: 42px 1fr auto; gap: 14px; align-items: center; min-height: 78px; padding: 15px; border: 1px solid #24435f; border-radius: 14px; background: rgba(7,20,34,.74); }
+    .workflow-step + .workflow-step { margin-top: 22px; }
+    .workflow-step + .workflow-step::before { content: ""; position: absolute; left: 35px; bottom: 100%; width: 1px; height: 23px; background: var(--cyan); opacity: .45; }
+    .workflow-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 10px; background: rgba(45,212,255,.1); color: var(--cyan); font-weight: 900; }
+    .workflow-step b { display: block; font-size: .91rem; }
+    .workflow-step small { color: var(--muted); }
+    .workflow-step em { color: var(--green); font: 750 .67rem/1 ui-monospace, SFMono-Regular, Consolas, monospace; font-style: normal; }
+    .panel-foot { display: flex; gap: 8px; padding: 0 28px 28px; }
+    .panel-foot span { flex: 1; padding: 10px; border: 1px solid rgba(147,171,195,.15); border-radius: 10px; color: #9fb7cc; font-size: .7rem; text-align: center; }
+
+    .home-panel { padding: 20px; }
+    .home-status { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 18px; padding: 20px; border: 1px solid rgba(45,212,255,.24); border-radius: 16px; background: linear-gradient(135deg, rgba(45,212,255,.1), rgba(36,139,255,.04)); }
+    .home-status small { color: var(--muted); }
+    .home-status strong { display: block; margin-top: 3px; font-size: 1.14rem; }
+    .home-score { width: 62px; height: 62px; display: grid; place-items: center; border: 6px solid rgba(45,212,255,.18); border-top-color: var(--cyan); border-radius: 50%; color: var(--cyan); font-weight: 900; }
+    .room-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; }
+    .room { min-height: 118px; padding: 16px; border: 1px solid #24435f; border-radius: 14px; background: rgba(7,20,34,.72); }
+    .room-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .room-top b { font-size: .88rem; }
+    .toggle { width: 33px; height: 18px; padding: 3px; border-radius: 999px; background: #1c4058; }
+    .toggle::after { content: ""; display: block; width: 12px; height: 12px; margin-left: 15px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 9px rgba(45,212,255,.7); }
+    .room-value { display: block; margin-top: 24px; font-size: 1.45rem; font-weight: 850; }
+    .room small { color: var(--muted); }
+    .scene-row { display: flex; gap: 8px; margin-top: 14px; }
+    .scene-row span { flex: 1; padding: 11px 8px; border: 1px solid rgba(147,171,195,.16); border-radius: 10px; color: #a9bfd3; font-size: .7rem; text-align: center; }
+
+    .care-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+    .care-card { padding: 24px; border-top: 2px solid var(--cyan); border-radius: 0 0 16px 16px; background: rgba(12,31,50,.66); }
+    .care-card b { display: block; margin-bottom: 8px; font-size: 1.04rem; }
+    .care-card p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .web-canvas { position: relative; min-height: 454px; padding: 24px; }
+    .browser-frame { position: absolute; inset: 24px 76px 70px 24px; overflow: hidden; border: 1px solid #2a4a66; border-radius: 16px; background: #07131f; box-shadow: 0 24px 55px rgba(0,0,0,.35); }
+    .browser-head { height: 38px; display: flex; align-items: center; gap: 6px; padding: 0 13px; border-bottom: 1px solid rgba(147,171,195,.14); background: #0e2438; }
+    .browser-head i { width: 7px; height: 7px; border-radius: 50%; background: #34516b; }
+    .browser-head i:first-child { background: var(--cyan); }
+    .address { width: 46%; height: 12px; margin-left: 8px; border-radius: 999px; background: rgba(147,171,195,.12); }
+    .web-preview { padding: 20px; }
+    .web-preview-nav { display: flex; align-items: center; justify-content: space-between; }
+    .web-preview-logo { width: 52px; height: 9px; border-radius: 2px; background: var(--cyan); }
+    .web-preview-menu { display: flex; gap: 6px; }
+    .web-preview-menu i { width: 24px; height: 5px; border-radius: 999px; background: #29455e; }
+    .web-preview-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 17px; margin-top: 27px; }
+    .preview-copy strong { display: block; width: 90%; height: 15px; border-radius: 3px; background: #e8f6ff; box-shadow: 0 24px 0 #e8f6ff; }
+    .preview-copy p { width: 76%; height: 6px; margin-top: 45px; border-radius: 999px; background: #46627a; box-shadow: 0 12px 0 #334e65; }
+    .preview-copy button { width: 72px; height: 24px; margin-top: 22px; border: 0; border-radius: 6px; background: var(--cyan); }
+    .preview-visual { min-height: 135px; border: 1px solid rgba(45,212,255,.25); border-radius: 12px; background: radial-gradient(circle at 65% 35%, rgba(45,212,255,.22), transparent 36%), linear-gradient(145deg, #123a58, #0b2034); }
+    .preview-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 24px; }
+    .preview-cards i { height: 58px; border: 1px solid rgba(147,171,195,.14); border-radius: 8px; background: #0c2033; }
+    .phone-frame { position: absolute; right: 24px; bottom: 26px; width: 142px; height: 258px; padding: 8px; border: 1px solid #355773; border-radius: 24px; background: #040b12; box-shadow: 0 22px 50px rgba(0,0,0,.5); }
+    .phone-screen { height: 100%; padding: 22px 11px 11px; border-radius: 17px; background: linear-gradient(160deg, #123652, #071522); }
+    .phone-screen::before { content: ""; position: absolute; top: 13px; left: 50%; width: 37px; height: 5px; border-radius: 99px; background: #1d3345; transform: translateX(-50%); }
+    .app-title { width: 55px; height: 8px; border-radius: 2px; background: var(--cyan); }
+    .app-metric { margin-top: 18px; padding: 14px 10px; border: 1px solid rgba(45,212,255,.22); border-radius: 11px; background: rgba(3,12,21,.38); }
+    .app-metric small { color: var(--muted); font-size: .55rem; }
+    .app-metric b { display: block; margin-top: 5px; font-size: 1.15rem; }
+    .app-bars { display: flex; align-items: end; gap: 5px; height: 55px; margin-top: 19px; }
+    .app-bars i { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(var(--cyan), #1678c9); }
+    .app-bars i:nth-child(1) { height: 35%; } .app-bars i:nth-child(2) { height: 68%; } .app-bars i:nth-child(3) { height: 48%; } .app-bars i:nth-child(4) { height: 88%; }
+    .tech-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+    .tech-row span { padding: 8px 11px; border: 1px solid rgba(147,171,195,.17); border-radius: 8px; color: #aac0d3; font-size: .74rem; }
+
+    .method { background: #07111d; border-block: 1px solid rgba(147,171,195,.1); }
+    .method-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 74px; }
+    .method-copy { position: sticky; top: 120px; align-self: start; }
+    .method-copy h2 { margin: 18px 0 20px; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1; letter-spacing: -.045em; }
+    .method-copy p { color: var(--muted); }
+    .steps { counter-reset: step; }
+    .step { counter-increment: step; display: grid; grid-template-columns: 70px 1fr; gap: 20px; padding: 26px 0 28px; border-top: 1px solid var(--line); }
+    .step:last-child { border-bottom: 1px solid var(--line); }
+    .step::before { content: "0" counter(step); color: var(--cyan); font: 800 .9rem/1.3 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .step h3 { margin-bottom: 8px; font-size: 1.18rem; }
+    .step p { margin-bottom: 0; color: var(--muted); }
+
+    .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .audience-card { min-height: 220px; padding: 27px; border: 1px solid var(--line); border-radius: 18px; background: rgba(11,27,46,.7); }
+    .audience-card .number { color: var(--cyan); font: 750 .76rem/1 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .audience-card h3 { margin: 54px 0 9px; font-size: 1.25rem; }
+    .audience-card p { margin: 0; color: var(--muted); }
+
+    .identity-card { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(36px, 7vw, 90px); padding: clamp(32px, 5vw, 58px); border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, #0c2136, #081522); }
+    .logo-stage { min-height: 250px; display: grid; place-items: center; padding: 28px; border-radius: 18px; background: #f7f9fb; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06), 0 20px 55px rgba(0,0,0,.26); }
+    .logo-stage img { width: min(100%, 480px); }
+    .identity-copy h2 { margin: 17px 0; font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1; letter-spacing: -.045em; }
+    .identity-copy p { color: var(--muted); margin-bottom: 0; }
+
+    .contact-wrap { position: relative; display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(36px, 6vw, 70px); padding: clamp(34px, 5vw, 64px); border: 1px solid var(--line-bright); border-radius: 28px; overflow: hidden; background: linear-gradient(135deg, #123957, #0a1a2c 64%); box-shadow: 0 30px 80px rgba(0,0,0,.34); }
+    .contact-wrap::after { content: "EAC"; position: absolute; right: -20px; bottom: -82px; color: rgba(255,255,255,.025); font-size: 16rem; font-weight: 950; letter-spacing: -.1em; pointer-events: none; }
+    .contact-wrap h2 { margin: 16px 0 18px; max-width: 650px; font-size: clamp(2.5rem, 4.4vw, 4.6rem); line-height: .96; letter-spacing: -.05em; }
+    .contact-wrap p { color: #b7cadd; max-width: 610px; }
+    .contact-intro { position: relative; z-index: 1; }
+    .contact-links { position: relative; z-index: 1; display: grid; gap: 10px; margin-top: 30px; }
+    .contact-link { display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 14px; padding: 15px; border: 1px solid rgba(142,233,255,.2); border-radius: 14px; background: rgba(3,12,21,.35); text-decoration: none; transition: background .2s ease, border-color .2s ease; }
+    .contact-link:hover { background: rgba(3,12,21,.6); border-color: var(--cyan); }
+    .contact-link i { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 11px; background: var(--cyan); color: #03111c; font-style: normal; font-weight: 950; }
+    .contact-link span { color: var(--muted); font-size: .76rem; }
+    .contact-link strong { display: block; font-size: .98rem; overflow-wrap: anywhere; }
+    .project-form { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; padding: clamp(22px, 3vw, 34px); border: 1px solid rgba(142,233,255,.2); border-radius: 20px; background: rgba(3,12,21,.56); box-shadow: inset 0 1px 0 rgba(255,255,255,.03); }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #d9e9f5; font-size: .82rem; font-weight: 750; }
+    .field label span { color: var(--muted); font-weight: 500; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 50px; border: 1px solid #2a4a65; border-radius: 11px; background: #081624; color: var(--white); font: inherit; font-size: 1rem; padding: 12px 14px; transition: border-color .2s ease, box-shadow .2s ease; }
+    .field textarea { min-height: 135px; resize: vertical; }
+    .field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--cyan) 50%), linear-gradient(135deg, var(--cyan) 50%, transparent 50%); background-position: calc(100% - 19px) 21px, calc(100% - 14px) 21px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 38px; }
+    .field input::placeholder, .field textarea::placeholder { color: #678198; opacity: 1; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(45,212,255,.11); }
+    .form-footer { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 4px; }
+    .form-note { margin: 0; color: var(--muted); font-size: .75rem; line-height: 1.45; }
+    .form-submit { flex: 0 0 auto; min-height: 50px; padding: 0 22px; border: 0; border-radius: 11px; background: linear-gradient(135deg, var(--cyan), #1aa6d7); color: #021019; font: inherit; font-weight: 850; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(45,212,255,.2); }
+    .form-status { grid-column: 1 / -1; display: none; margin: 0; padding: 12px 14px; border: 1px solid rgba(73,230,161,.3); border-radius: 10px; background: rgba(73,230,161,.08); color: #aaf4d1; font-size: .86rem; }
+    .form-status.visible { display: block; }
+
+    footer { padding: 34px 0 46px; }
+    .footer-grid { display: flex; align-items: center; justify-content: space-between; gap: 30px; color: var(--muted); font-size: .8rem; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--white); font-weight: 800; }
+    .footer-brand img { width: 30px; height: 30px; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; position: absolute; top: 78px; inset-inline: 20px; padding: 18px; border: 1px solid var(--line); border-radius: 15px; background: #091626; box-shadow: 0 22px 60px rgba(0,0,0,.45); }
+      .nav-links.open { display: grid; }
+      .menu-button { display: block; }
+      .nav-cta { display: none; }
+      .hero { padding-top: 56px; }
+      .hero-grid, .section-head, .method-grid, .contact-wrap, .focus-grid, .identity-card { grid-template-columns: 1fr; }
+      .focus-grid.reverse .focus-copy, .focus-grid.reverse .focus-visual { order: initial; }
+      .system-card { min-height: 470px; }
+      .strip-grid { grid-template-columns: repeat(2, 1fr); }
+      .strip-title { grid-column: 1 / -1; text-align: center; }
+      .method-copy { position: static; }
+    }
+
+    @media (max-width: 650px) {
+      .shell { width: min(calc(100% - 28px), var(--max)); }
+      .brand-copy span { display: none; }
+      h1 { font-size: clamp(2.7rem, 14vw, 4.2rem); }
+      section { padding: 72px 0; }
+      .services-grid, .audience-grid, .care-grid { grid-template-columns: 1fr; }
+      .section-head { gap: 20px; }
+      .service-card { min-height: 260px; padding: 24px; }
+      .service-card h3 { margin-top: 38px; }
+      .focus-section { padding: 76px 0; }
+      .focus-visual { min-height: 485px; }
+      .workflow { padding: 20px; }
+      .workflow-step { grid-template-columns: 38px 1fr; }
+      .workflow-step em { grid-column: 2; }
+      .panel-foot { padding: 0 20px 20px; }
+      .panel-foot span:last-child { display: none; }
+      .home-panel { padding: 14px; }
+      .room-grid { grid-template-columns: 1fr; }
+      .logo-stage { min-height: 190px; }
+      .web-canvas { min-height: 430px; padding: 14px; }
+      .browser-frame { inset: 18px 48px 92px 14px; }
+      .phone-frame { right: 14px; bottom: 22px; width: 126px; height: 232px; }
+      .web-preview-hero { grid-template-columns: 1fr; }
+      .preview-visual { min-height: 95px; }
+      .system-card { min-height: 430px; }
+      .diagram::before { width: 240px; height: 240px; }
+      .diagram::after { width: 340px; height: 340px; }
+      .core { width: 118px; height: 118px; border-radius: 27px; }
+      .core img { width: 64px; }
+      .node { min-width: 104px; padding: 10px; }
+      .node small { display: none; }
+      .n1 { left: 3%; top: 15%; }
+      .n2 { right: 3%; top: 18%; }
+      .n3 { left: 3%; bottom: 15%; }
+      .n4 { right: 3%; bottom: 13%; }
+      .signal { display: none; }
+      .step { grid-template-columns: 45px 1fr; }
+      .contact-wrap { padding: 30px 22px; gap: 32px; }
+      .project-form { grid-template-columns: 1fr; padding: 20px 16px; }
+      .field.full { grid-column: auto; }
+      .form-footer { grid-column: auto; align-items: stretch; flex-direction: column; }
+      .form-submit { width: 100%; }
+      .form-status { grid-column: auto; }
+      .footer-grid { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="background"></div>
-<div class="grid"></div>
-
-<header>
-
-<nav>
-
-<div class="logo">
-
-<img src="logo-removebg-preview (1).png">
-
-</div>
-
-<div class="links">
-<a href="#services">Servizi</a>
-<a href="#products">Prodotti</a>
-<a href="#solutions">Soluzioni</a>
-<a href="#partners">Partners</a>
-<a href="#project">Progetto</a>
-<a href="#contact">Contatti</a>
-</div>
-
-</nav>
-
-</header>
-
-<section class="hero">
-
-<div class="hero-container">
-
-<div class="hero-text">
-
-<h1>
-THE FUTURE<br>
-IS <span>EAC</span>
-</h1>
-
-<p>
-EAC Technology realizza ecosistemi smart professionali:
-domotica avanzata, videosorveglianza AI, Home Assistant,
-reti professionali, sviluppo siti web, branding digitale
-e automazioni intelligenti.
-<br><br>
-Dal design del sito web fino al controllo completo
-della smart home, EAC sviluppa tecnologie moderne,
-eleganti e totalmente personalizzate.
-</p>
-
-<div class="buttons">
-
-<a href="#products" class="btn primary">
-Scopri EAC
-</a>
-
-<a href="#contact" class="btn secondary">
-Contattaci
-</a>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<div class="panel-top">
-
-<h3>EAC Technology</h3>
-
-<div class="online">
-● SYSTEM ACTIVE
-</div>
-
-</div>
-
-<div class="hero-box">
-
-<h2>AI</h2>
-
-<p style="color:#d8d8d8;">
-Smart Automation System
-</p>
-
-</div>
-
-<div class="hero-grid">
-
-<div class="mini">
-<h3>24/7</h3>
-<p>Monitoring</p>
-</div>
-
-<div class="mini">
-<h3>WEB</h3>
-<p>Development</p>
-</div>
-
-</div>
-
-<div class="big-box">
-
-<h3>Next Generation Technology</h3>
-
-<p>
-Domotica, networking professionale,
-videosorveglianza AI e sviluppo web
-in un unico ecosistema smart.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="services">
-
-<div class="container">
-
-<div class="title">
-
-<h2>Servizi Premium</h2>
-
-<p>
-Tecnologia, design e automazione
-in un unico ecosistema professionale.
-</p>
-
-</div>
-
-<div class="services">
-
-<div class="card">
-<div class="icon">🏠</div>
-<h3>Smart Home</h3>
-<p>Automazioni complete per luci, tapparelle, clima, cancelli e sensori intelligenti.</p>
-</div>
-
-<div class="card">
-<div class="icon">📹</div>
-<h3>Videosorveglianza AI</h3>
-<p>Sistemi NVR avanzati con Frigate AI, notifiche smart e monitoraggio professionale.</p>
-</div>
-
-<div class="card">
-<div class="icon">🌐</div>
-<h3>Siti Web Moderni</h3>
-<p>Sviluppo siti web futuristici, dashboard smart e piattaforme business.</p>
-</div>
-
-<div class="card">
-<div class="icon">⚡</div>
-<h3>Server EAC</h3>
-<p>Mini server professionali per Home Assistant, storage e controllo remoto.</p>
-</div>
-
-<div class="card">
-<div class="icon">📡</div>
-<h3>Ponti Radio</h3>
-<p>Collegamenti wireless professionali ad alta velocità e lunga distanza.</p>
-</div>
-
-<div class="card">
-<div class="icon">🎨</div>
-<h3>Brand Identity</h3>
-<p>Branding digitale, loghi professionali e contenuti social avanzati.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="partners">
-
-<div class="container">
-
-<div class="title">
-
-<h2>Partners & Technologies</h2>
-
-<p>
-EAC utilizza tecnologie e dispositivi dei migliori brand del settore.
-</p>
-
-</div>
-
-<div class="collabs">
-
-<div class="collab">
-<img src="logo sonoff.png">
-</div>
-
-<div class="collab">
-<img src="logo shelly.png">
-</div>
-
-<div class="collab">
-<img src="logo bitcino.png">
-</div>
-
-<div class="collab">
-<img src="logo asus.png">
-</div>
-
-<div class="collab">
-<img src="logo msi.png">
-</div>
-
-<div class="collab">
-<img src="logo ezviz.png">
-</div>
-
-<div class="collab">
-<img src="logo mercusys.png">
-</div>
-
-<div class="collab">
-<img src="logo isopower.png">
-</div>
-
-<div class="collab">
-<img src="mast.png">
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="project">
-
-<div class="container">
-
-<div class="contact">
-
-<h2>Parlaci Del Tuo Progetto</h2>
-
-<p>
-Compila il modulo qui sotto e il team EAC
-ti contatterà per sviluppare il tuo progetto personalizzato.
-</p>
-
-<form action="https://formsubmit.co/infoelectronicascione@gmail.com" method="POST">
-
-<div class="input-grid">
-
-<input type="text" placeholder="Nome" required>
-<input type="text" placeholder="Cognome" required>
-
-</div>
-
-<div class="input-grid">
-
-<input type="tel" placeholder="Numero di telefono" required>
-<input type="email" placeholder="Email" required>
-
-</div>
-
-<textarea placeholder="Descrivi il tuo progetto..." required></textarea>
-
-<button type="submit" class="btn primary" style="border:none;cursor:pointer;width:100%;">
-Invia Richiesta
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="contact">
-
-<div class="container">
-
-<div class="contact">
-
-<h2>Contattaci</h2>
-
-<p>
-Contatta EAC Technology per iniziare il tuo progetto.
-</p>
-
-<div class="contact-boxes">
-
-<div class="contact-box">
-
-<h3>📧 Email</h3>
-
-<p>
-infoelectronicascione@gmail.com
-</p>
-
-</div>
-
-<div class="contact-box">
-
-<h3>📱 Business</h3>
-
-<p>
-+39 3391749658
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 EAC Technology — Smart Systems • AI • Web • Innovation
-
-</footer>
-
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#inizio" aria-label="EAC Technologies, torna all'inizio">
+        <img src="assets/eac-mark.png" alt="">
+        <span class="brand-copy"><strong>EAC</strong><span>Technologies</span></span>
+      </a>
+      <nav class="nav-links" id="site-nav" aria-label="Navigazione principale">
+        <a href="#servizi">Servizi</a>
+        <a href="#automazioni">Automazioni</a>
+        <a href="#domotica">Domotica</a>
+        <a href="#webapp">Web &amp; App</a>
+        <a href="#metodo">Metodo</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <a class="nav-cta" href="#contatti">Parliamo del progetto <span aria-hidden="true">↓</span></a>
+      <button class="menu-button" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="inizio">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Tecnologia integrata</span>
+          <h1>Un solo sistema.<br><span>Tutto connesso.</span></h1>
+          <p>Progettiamo e integriamo domotica, sicurezza, reti e infrastrutture digitali per abitazioni e aziende. Meno sistemi isolati, più controllo.</p>
+          <div class="hero-actions">
+            <a class="button" href="#contatti">Parlaci del tuo progetto <span aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="#servizi">Esplora i servizi</a>
+          </div>
+          <ul class="hero-notes" aria-label="Punti chiave">
+            <li>Progetto su misura</li>
+            <li>Installazione e integrazione</li>
+            <li>Assistenza continuativa</li>
+          </ul>
+        </div>
+
+        <div class="system-card" role="img" aria-label="Schema EAC che collega domotica, rete, sicurezza e dati">
+          <div class="card-top"><i></i><i></i><i></i><span>SISTEMA ATTIVO</span></div>
+          <div class="diagram">
+            <span class="signal s1"></span><span class="signal s2"></span><span class="signal s3"></span><span class="signal s4"></span>
+            <div class="core"><img src="assets/eac-mark.png" alt=""></div>
+            <div class="node n1"><b>Smart spaces</b><small>Controllo e scenari</small></div>
+            <div class="node n2"><b>Networking</b><small>Wi-Fi · LAN · VPN</small></div>
+            <div class="node n3"><b>Sicurezza</b><small>Video · Accessi</small></div>
+            <div class="node n4"><b>Dati & server</b><small>Backup · NAS</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip" aria-label="Ambiti EAC">
+      <div class="shell strip-grid">
+        <span class="strip-title">Un ecosistema, non singoli dispositivi</span>
+        <span class="strip-item">Smart Home</span>
+        <span class="strip-item">Smart Business</span>
+        <span class="strip-item">Security</span>
+        <span class="strip-item">Infrastructure</span>
+        <span class="strip-item">Web &amp; App</span>
+      </div>
+    </div>
+
+    <section id="servizi">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="eyebrow">Cosa facciamo</span><h2>Soluzioni che lavorano insieme.</h2></div>
+          <p>Partiamo dall’ambiente reale e costruiamo l’infrastruttura adatta: connettività, automazione, protezione e gestione diventano parti coordinate dello stesso progetto.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card" data-code="SYS / 01">
+            <div class="service-icon" aria-hidden="true">⌂</div>
+            <h3>Domotica e smart building</h3>
+            <p>Luci, clima, tapparelle, accessi, energia e scenari coordinati in un’esperienza semplice da usare, a casa e in azienda.</p>
+            <ul><li>Home Assistant</li><li>Controllo locale</li><li>Dashboard</li></ul>
+          </article>
+          <article class="service-card" data-code="NET / 02">
+            <div class="service-icon" aria-hidden="true">⌁</div>
+            <h3>Reti professionali</h3>
+            <p>Wi-Fi, cablaggio, ponti radio, switching e segmentazione progettati per coprire spazi reali e sostenere tutti i sistemi connessi.</p>
+            <ul><li>Wi-Fi & mesh</li><li>VLAN</li><li>VPN</li></ul>
+          </article>
+          <article class="service-card" data-code="SEC / 03">
+            <div class="service-icon" aria-hidden="true">◎</div>
+            <h3>Videosorveglianza e sicurezza</h3>
+            <p>Telecamere IP, registrazione, controllo accessi e notifiche integrate con la rete e configurate sulle esigenze del luogo.</p>
+            <ul><li>Telecamere IP</li><li>NVR</li><li>Controllo accessi</li></ul>
+          </article>
+          <article class="service-card" data-code="DAT / 04">
+            <div class="service-icon" aria-hidden="true">▦</div>
+            <h3>Server, backup e automazione</h3>
+            <p>NAS, backup, accesso remoto e workflow digitali per proteggere i dati e ridurre attività ripetitive nei processi aziendali.</p>
+            <ul><li>NAS & backup</li><li>Automazioni</li><li>Assistenza</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="focus-section alt" id="automazioni">
+      <div class="shell focus-grid">
+        <div class="focus-copy">
+          <span class="eyebrow">Automazioni aziendali</span>
+          <h2>Meno passaggi manuali. Più controllo sul lavoro.</h2>
+          <p>Colleghiamo strumenti, documenti e attività che oggi richiedono copia-incolla, verifiche ripetitive o continui passaggi tra persone. Ogni flusso viene progettato sul processo reale e mantiene visibili stato, responsabilità ed esito.</p>
+          <div class="focus-list">
+            <div class="focus-item"><span>01</span><div><h3>Documenti e richieste</h3><p>Classificazione, estrazione dei dati, archiviazione e inoltro verso la persona o il sistema corretto.</p></div></div>
+            <div class="focus-item"><span>02</span><div><h3>Workflow operativi</h3><p>Moduli, email, cartelle, notifiche e ticket collegati in sequenze automatiche e verificabili.</p></div></div>
+            <div class="focus-item"><span>03</span><div><h3>AI con supervisione</h3><p>Ricerca, sintesi e preparazione di bozze sui contenuti autorizzati, con controllo umano nei passaggi importanti.</p></div></div>
+          </div>
+        </div>
+        <div class="focus-visual" aria-label="Esempio di flusso automatico aziendale">
+          <div class="panel-bar"><b>EAC / BUSINESS FLOW</b><span class="panel-state">IN ESECUZIONE</span></div>
+          <div class="workflow">
+            <div class="workflow-step"><span class="workflow-icon">IN</span><div><b>Richiesta ricevuta</b><small>Email, modulo o documento</small></div><em>ACQUISITA</em></div>
+            <div class="workflow-step"><span class="workflow-icon">AI</span><div><b>Dati letti e ordinati</b><small>Classificazione e campi utili</small></div><em>VERIFICATA</em></div>
+            <div class="workflow-step"><span class="workflow-icon">→</span><div><b>Attività assegnata</b><small>Cartella, ticket o responsabile</small></div><em>INVIATA</em></div>
+            <div class="workflow-step"><span class="workflow-icon">✓</span><div><b>Esito registrato</b><small>Stato, log e notifica finale</small></div><em>COMPLETA</em></div>
+          </div>
+          <div class="panel-foot"><span>Tracciabile</span><span>Modulare</span><span>Integrabile</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="focus-section" id="domotica">
+      <div class="shell focus-grid reverse">
+        <div class="focus-copy">
+          <span class="eyebrow">Domotica e smart building</span>
+          <h2>La tecnologia scompare. Lo spazio risponde.</h2>
+          <p>Un unico sistema coordina luci, clima, tapparelle, accessi, sicurezza ed energia. I comandi fisici restano semplici; scenari e dashboard aggiungono controllo senza complicare la vita quotidiana.</p>
+          <div class="focus-list">
+            <div class="focus-item"><span>01</span><div><h3>Scenari personalizzati</h3><p>Uscita, rientro, notte, apertura o chiusura attività: più azioni diventano un solo comando.</p></div></div>
+            <div class="focus-item"><span>02</span><div><h3>Comfort ed energia</h3><p>Clima per zone, illuminazione, presenza e consumi coordinati in base agli orari e all’uso reale.</p></div></div>
+            <div class="focus-item"><span>03</span><div><h3>Controllo locale</h3><p>Dashboard chiara, integrazione multi-dispositivo e funzionamento pensato per affidabilità e privacy.</p></div></div>
+          </div>
+        </div>
+        <div class="focus-visual" aria-label="Esempio di pannello per la gestione domotica">
+          <div class="panel-bar"><b>EAC / SMART SPACE</b><span class="panel-state">CASA CONNESSA</span></div>
+          <div class="home-panel">
+            <div class="home-status"><div><small>Stato generale</small><strong>Tutto sotto controllo</strong></div><div class="home-score">92</div></div>
+            <div class="room-grid">
+              <div class="room"><div class="room-top"><b>Zona giorno</b><span class="toggle"></span></div><span class="room-value">22.5°</span><small>Clima comfort</small></div>
+              <div class="room"><div class="room-top"><b>Sicurezza</b><span class="toggle"></span></div><span class="room-value">Attiva</span><small>Perimetro protetto</small></div>
+              <div class="room"><div class="room-top"><b>Energia</b><span class="toggle"></span></div><span class="room-value">2.4 kW</span><small>Consumo attuale</small></div>
+              <div class="room"><div class="room-top"><b>Esterni</b><span class="toggle"></span></div><span class="room-value">Auto</span><small>Luci e irrigazione</small></div>
+            </div>
+            <div class="scene-row"><span>Rientro</span><span>Notte</span><span>Fuori casa</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="shell care-grid" aria-label="Servizi continuativi EAC">
+        <article class="care-card"><b>Monitoraggio tecnico</b><p>Controllo dello stato di rete, server, storage e dispositivi supportati.</p></article>
+        <article class="care-card"><b>Backup e continuità</b><p>Copie, versioni e procedure di ripristino dimensionate sulle informazioni da proteggere.</p></article>
+        <article class="care-card"><b>Manutenzione evolutiva</b><p>Il sistema può crescere per fasi con nuove aree, automazioni e integrazioni.</p></article>
+      </div>
+    </section>
+
+    <section class="focus-section alt" id="webapp">
+      <div class="shell focus-grid">
+        <div class="focus-copy">
+          <span class="eyebrow">Siti web e sviluppo app</span>
+          <h2>Esperienze digitali costruite intorno al tuo lavoro.</h2>
+          <p>Realizziamo siti e applicazioni web responsive che presentano l’azienda, raccolgono richieste e trasformano attività operative in strumenti semplici da usare. Il progetto può collegarsi ai flussi e all’infrastruttura già presenti.</p>
+          <div class="focus-list">
+            <div class="focus-item"><span>01</span><div><h3>Siti aziendali ed e-commerce</h3><p>Presenza online veloce, chiara e ottimizzata per smartphone, con cataloghi e funzioni commerciali quando servono.</p></div></div>
+            <div class="focus-item"><span>02</span><div><h3>Portali e applicazioni web</h3><p>Aree clienti, strumenti interni, gestione richieste e applicazioni su misura accessibili da browser.</p></div></div>
+            <div class="focus-item"><span>03</span><div><h3>Dashboard e integrazioni</h3><p>Dati, impianti, documenti e servizi riuniti in interfacce operative collegate tramite API e workflow.</p></div></div>
+          </div>
+          <div class="tech-row" aria-label="Tipologie di progetto"><span>Responsive design</span><span>Web app</span><span>Area clienti</span><span>Dashboard</span><span>Integrazioni API</span></div>
+        </div>
+        <div class="focus-visual" aria-label="Anteprima di un sito responsive e di una applicazione mobile">
+          <div class="panel-bar"><b>EAC / DIGITAL STUDIO</b><span class="panel-state">ONLINE</span></div>
+          <div class="web-canvas">
+            <div class="browser-frame">
+              <div class="browser-head"><i></i><i></i><i></i><span class="address"></span></div>
+              <div class="web-preview">
+                <div class="web-preview-nav"><span class="web-preview-logo"></span><span class="web-preview-menu"><i></i><i></i><i></i></span></div>
+                <div class="web-preview-hero"><div class="preview-copy"><strong></strong><p></p><button type="button" tabindex="-1" aria-hidden="true"></button></div><div class="preview-visual"></div></div>
+                <div class="preview-cards"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="phone-frame">
+              <div class="phone-screen"><div class="app-title"></div><div class="app-metric"><small>ATTIVITÀ OGGI</small><b>24</b></div><div class="app-bars"><i></i><i></i><i></i><i></i></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="method" id="metodo">
+      <div class="shell method-grid">
+        <div class="method-copy">
+          <span class="eyebrow">Come lavoriamo</span>
+          <h2>Dal problema al sistema finito.</h2>
+          <p>Ogni progetto viene dimensionato sul contesto: niente pacchetti forzati, niente tecnologia aggiunta senza un motivo.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><div><h3>Ascolto e sopralluogo</h3><p>Raccogliamo obiettivi, vincoli, spazi e criticità dell’impianto o del processo esistente.</p></div></article>
+          <article class="step"><div><h3>Progetto tecnico</h3><p>Definiamo architettura, priorità, componenti, integrazioni e possibilità di crescita.</p></div></article>
+          <article class="step"><div><h3>Installazione e test</h3><p>Configuriamo il sistema, verifichiamo il funzionamento e consegniamo un’esperienza ordinata.</p></div></article>
+          <article class="step"><div><h3>Supporto nel tempo</h3><p>Assistenza, manutenzione e aggiornamenti aiutano il sistema a restare affidabile e utile.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="clienti">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="eyebrow">Per chi</span><h2>Spazi diversi. Una regia unica.</h2></div>
+          <p>Le soluzioni EAC sono pensate per chi vuole un interlocutore capace di collegare impianti, rete e strumenti digitali in modo coerente.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card"><span class="number">01 / CASA</span><h3>Abitazioni e ville</h3><p>Comfort, sicurezza, copertura di rete e controllo dei consumi senza frammentare tutto in app separate.</p></article>
+          <article class="audience-card"><span class="number">02 / BUSINESS</span><h3>Uffici, negozi e studi</h3><p>Reti affidabili, accessi, sicurezza, backup e automazioni che semplificano la gestione quotidiana.</p></article>
+          <article class="audience-card"><span class="number">03 / STRUTTURE</span><h3>Hotel, B&amp;B e capannoni</h3><p>Copertura, monitoraggio e controllo coordinati anche su ambienti estesi o più aree operative.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Identità EAC">
+      <div class="shell identity-card">
+        <div class="logo-stage"><img src="assets/eac-wordmark.png" alt="EAC Electronic Ascione Company"></div>
+        <div class="identity-copy">
+          <span class="eyebrow">Il marchio</span>
+          <h2>Electronic Ascione Company</h2>
+          <p>EAC riunisce competenze impiantistiche e digitali in un unico interlocutore: dalla rete che collega gli ambienti ai sistemi che li rendono più sicuri, efficienti e semplici da gestire.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contatti">
+      <div class="shell contact-wrap">
+        <div class="contact-intro">
+          <span class="eyebrow">Inizia da qui</span>
+          <h2>Parlaci del tuo progetto.</h2>
+          <p>Compila i campi con le informazioni principali. In seguito collegheremo questo modulo al sistema che gestirà e inoltrerà le richieste.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="tel:+393391749658"><i aria-hidden="true">T</i><div><span>Telefono</span><strong>339 174 9658</strong></div></a>
+            <a class="contact-link" href="mailto:infoelectronicascione@gmail.com?subject=Richiesta%20informazioni%20EAC"><i aria-hidden="true">@</i><div><span>Email</span><strong>infoelectronicascione@gmail.com</strong></div></a>
+          </div>
+        </div>
+        <form class="project-form" id="project-form">
+          <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Il tuo nome" required></div>
+          <div class="field"><label for="cognome">Cognome</label><input id="cognome" name="cognome" type="text" autocomplete="family-name" placeholder="Il tuo cognome" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="nome@azienda.it" required></div>
+          <div class="field"><label for="azienda">Azienda <span>(facoltativa)</span></label><input id="azienda" name="azienda" type="text" autocomplete="organization" placeholder="Nome azienda"></div>
+          <div class="field"><label for="tipo">Tipo di progetto</label><select id="tipo" name="tipo" required><option value="" selected disabled>Seleziona un servizio</option><option>Sito web o e-commerce</option><option>Applicazione web o portale</option><option>Automazione aziendale</option><option>Domotica o smart building</option><option>Reti e infrastruttura</option><option>Videosorveglianza e sicurezza</option><option>Altro progetto</option></select></div>
+          <div class="field"><label for="budget">Budget indicativo</label><select id="budget" name="budget" required><option value="" selected disabled>Seleziona una fascia</option><option>Da definire</option><option>Fino a 2.500 €</option><option>Da 2.500 € a 5.000 €</option><option>Da 5.000 € a 10.000 €</option><option>Oltre 10.000 €</option></select></div>
+          <div class="field full"><label for="descrizione">Descrizione del progetto</label><textarea id="descrizione" name="descrizione" placeholder="Raccontaci cosa vuoi realizzare, il problema da risolvere e le funzioni più importanti." required></textarea></div>
+          <div class="form-footer"><p class="form-note">Il modulo non invia ancora i dati: sarà collegato nel prossimo passaggio.</p><button class="form-submit" type="submit">Verifica richiesta <span aria-hidden="true">→</span></button></div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite">Modulo compilato correttamente. È pronto per essere collegato al sistema di invio.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <span class="footer-brand"><img src="assets/eac-mark.png" alt=""> EAC Technologies</span>
+      <span>Electronic Ascione Company · Soluzioni tecnologiche integrate</span>
+      <span>© <span id="year"></span> EAC</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const nav = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
+    });
+    nav.addEventListener('click', (event) => {
+      if (event.target.matches('a')) {
+        nav.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Apri menu');
+      }
+    });
+    const projectForm = document.getElementById('project-form');
+    const formStatus = document.getElementById('form-status');
+    projectForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!projectForm.reportValidity()) return;
+      formStatus.classList.add('visible');
+      formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
 </html>
