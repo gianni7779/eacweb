@@ -156,8 +156,9 @@
     .section-head p { margin: 0; color: var(--muted); font-size: 1.05rem; max-width: 620px; }
 
     .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .service-card { position: relative; min-height: 290px; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(15,36,59,.92), rgba(8,18,31,.96)); overflow: hidden; transition: transform .22s ease, border-color .22s ease; }
+    .service-card { position: relative; display: block; min-height: 290px; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(15,36,59,.92), rgba(8,18,31,.96)); color: inherit; text-decoration: none; overflow: hidden; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
     .service-card:hover { transform: translateY(-4px); border-color: rgba(45,212,255,.45); }
+    .service-card:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; box-shadow: 0 0 0 8px rgba(45,212,255,.08); }
     .service-card::after { content: attr(data-code); position: absolute; right: 24px; top: 21px; color: rgba(142,233,255,.45); font: 700 .7rem/1 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .12em; }
     .service-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line-bright); border-radius: 13px; color: var(--cyan); background: rgba(45,212,255,.06); font-size: 1.25rem; font-weight: 900; }
     .service-card h3 { margin: 46px 0 12px; font-size: 1.46rem; }
@@ -174,6 +175,7 @@
     .focus-copy > p { color: #a9bfd3; font-size: 1.06rem; }
     .focus-list { display: grid; gap: 14px; margin-top: 32px; }
     .focus-item { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; }
+    .focus-item[id] { scroll-margin-top: 120px; }
     .focus-item > span { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line-bright); border-radius: 9px; color: var(--cyan); font: 800 .74rem/1 ui-monospace, SFMono-Regular, Consolas, monospace; background: rgba(45,212,255,.05); }
     .focus-item h3 { margin: 1px 0 4px; font-size: 1rem; }
     .focus-item p { margin: 0; color: var(--muted); font-size: .9rem; }
@@ -440,12 +442,12 @@
           <p>Partiamo dall’ambiente reale e costruiamo l’infrastruttura adatta: connettività, automazione, protezione e gestione diventano parti coordinate dello stesso progetto.</p>
         </div>
         <div class="services-grid">
-          <article class="service-card" data-code="SYS / 01">
+          <a class="service-card" data-code="SYS / 01" href="#domotica" aria-label="Vai alla sezione Domotica e smart building">
             <div class="service-icon" aria-hidden="true">⌂</div>
             <h3>Domotica e smart building</h3>
             <p>Luci, clima, tapparelle, accessi, energia e scenari coordinati in un’esperienza semplice da usare, a casa e in azienda.</p>
             <ul><li>Home Assistant</li><li>Controllo locale</li><li>Dashboard</li></ul>
-          </article>
+          </a>
           <article class="service-card" data-code="NET / 02">
             <div class="service-icon" aria-hidden="true">⌁</div>
             <h3>Reti professionali</h3>
@@ -464,6 +466,30 @@
             <p>NAS, backup, accesso remoto e workflow digitali per proteggere i dati e ridurre attività ripetitive nei processi aziendali.</p>
             <ul><li>NAS & backup</li><li>Automazioni</li><li>Assistenza</li></ul>
           </article>
+          <a class="service-card" data-code="AUT / 05" href="#automazioni" aria-label="Vai alla sezione Automazioni aziendali">
+            <div class="service-icon" aria-hidden="true">↻</div>
+            <h3>Automazioni aziendali</h3>
+            <p>Documenti, richieste, notifiche e attività ripetitive collegati in flussi ordinati, verificabili e su misura.</p>
+            <ul><li>Workflow</li><li>Documenti</li><li>AI supervisionata</li></ul>
+          </a>
+          <a class="service-card" data-code="WEB / 06" href="#web-siti" aria-label="Vai a Siti aziendali ed e-commerce">
+            <div class="service-icon" aria-hidden="true">◇</div>
+            <h3>Siti aziendali ed e-commerce</h3>
+            <p>Siti veloci e responsive per presentare l’azienda, raccogliere contatti e vendere prodotti o servizi online.</p>
+            <ul><li>Responsive</li><li>SEO</li><li>E-commerce</li></ul>
+          </a>
+          <a class="service-card" data-code="APP / 07" href="#web-portali" aria-label="Vai a Portali e applicazioni web">
+            <div class="service-icon" aria-hidden="true">▱</div>
+            <h3>Portali e applicazioni web</h3>
+            <p>Aree clienti, strumenti interni e applicazioni su misura accessibili ovunque direttamente dal browser.</p>
+            <ul><li>Web app</li><li>Area clienti</li><li>Gestionali</li></ul>
+          </a>
+          <a class="service-card" data-code="API / 08" href="#web-dashboard" aria-label="Vai a Dashboard e integrazioni">
+            <div class="service-icon" aria-hidden="true">⌗</div>
+            <h3>Dashboard e integrazioni</h3>
+            <p>Dati, impianti e servizi riuniti in interfacce operative semplici, collegate tramite API e automazioni.</p>
+            <ul><li>Dashboard</li><li>API</li><li>Integrazioni</li></ul>
+          </a>
         </div>
       </div>
     </section>
@@ -533,9 +559,9 @@
           <h2>Esperienze digitali costruite intorno al tuo lavoro.</h2>
           <p>Realizziamo siti e applicazioni web responsive che presentano l’azienda, raccolgono richieste e trasformano attività operative in strumenti semplici da usare. Il progetto può collegarsi ai flussi e all’infrastruttura già presenti.</p>
           <div class="focus-list">
-            <div class="focus-item"><span>01</span><div><h3>Siti aziendali ed e-commerce</h3><p>Presenza online veloce, chiara e ottimizzata per smartphone, con cataloghi e funzioni commerciali quando servono.</p></div></div>
-            <div class="focus-item"><span>02</span><div><h3>Portali e applicazioni web</h3><p>Aree clienti, strumenti interni, gestione richieste e applicazioni su misura accessibili da browser.</p></div></div>
-            <div class="focus-item"><span>03</span><div><h3>Dashboard e integrazioni</h3><p>Dati, impianti, documenti e servizi riuniti in interfacce operative collegate tramite API e workflow.</p></div></div>
+            <div class="focus-item" id="web-siti"><span>01</span><div><h3>Siti aziendali ed e-commerce</h3><p>Presenza online veloce, chiara e ottimizzata per smartphone, con cataloghi e funzioni commerciali quando servono.</p></div></div>
+            <div class="focus-item" id="web-portali"><span>02</span><div><h3>Portali e applicazioni web</h3><p>Aree clienti, strumenti interni, gestione richieste e applicazioni su misura accessibili da browser.</p></div></div>
+            <div class="focus-item" id="web-dashboard"><span>03</span><div><h3>Dashboard e integrazioni</h3><p>Dati, impianti, documenti e servizi riuniti in interfacce operative collegate tramite API e workflow.</p></div></div>
           </div>
           <div class="tech-row" aria-label="Tipologie di progetto"><span>Responsive design</span><span>Web app</span><span>Area clienti</span><span>Dashboard</span><span>Integrazioni API</span></div>
         </div>
