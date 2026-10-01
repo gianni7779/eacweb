@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /invia.php
+
+Sitemap: https://eacweb.vercel.app/sitemap.xml
